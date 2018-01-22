@@ -7,7 +7,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 3000;
 const app = express();
-const conString = 'postgres://localhost:5432/kilovolt';
+const conString = 'postgres://localhost:5432/09-functional-programming';
 const client = new pg.Client(conString);
 client.connect();
 client.on('error', err => {
@@ -157,6 +157,7 @@ function loadArticles() {
 }
 
 function loadDB() {
+  console.log('loaddb');
   client.query(`
     CREATE TABLE IF NOT EXISTS
     authors (

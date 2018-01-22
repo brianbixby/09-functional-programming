@@ -24,12 +24,10 @@ var app = app || {};
 
   Article.loadAll = rawData => {
     console.log('article.loadall');
-    rawData.sort((a, b) => (new Date(b.publishedOn)) - (new Date(a.publishedOn)))
-
-    /* OLD forEach():
-    rawData.forEach(articleObject => Article.all.push(new Article(articleObject)));
-    */
-
+    rawData.sort((a, b) => (new Date(b.publishedOn)) - (new Date(a.publishedOn)));
+    Article.all = rawData.map(articleObject => new Article(articleObject));
+    // OLD forEach():
+    // rawData.forEach(articleObject => Article.all.push(new Article(articleObject)));
   };
 
   Article.fetchAll = callback => {
