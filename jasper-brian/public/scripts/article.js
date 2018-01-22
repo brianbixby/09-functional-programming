@@ -43,9 +43,10 @@ var app = app || {};
 
   Article.numWordsAll = () => {
     console.log('article.numwordsall');
+    console.log(Article.all.map().reduce());
     return {
       author: `${author}`,
-      wordCount: Article.all.map().reduce()
+      wordCount: Article.all.map().reduce(),
     }
   };
 
@@ -56,8 +57,21 @@ var app = app || {};
 
   Article.numWordsByAuthor = () => {
     console.log('article.numwordsbyauthor');
-    return Article.allAuthors().map(author => { })
+    return {
+      author: `${author}`,
+      wordCount: Article.allAuthors().map(author => { }),
+    } //
   };
+  // let newArr = people.reduce((acc, curr) => {
+  //   if (curr.id > 10) {
+  //     acc.push({
+  //       id: curr.id,
+  //       name: curr.name.split(' '),
+  //       diffBornAndGrad: curr.graduated - curr.born
+  //     })
+  //   }
+  //   return acc
+  // }, [])
 
   Article.truncateTable = callback => {
     console.log('article.truncatetable');
