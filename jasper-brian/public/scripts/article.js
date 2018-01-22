@@ -41,9 +41,10 @@ var app = app || {};
 
   Article.numWordsAll = () => {
     console.log('article.numwordsall');
-    return Article.all.map(idx =>{
+    return Article.all.map(idx => {
+      console.log(idx.author_id);
       idx.body.split(' ');
-      console.log(idx.body.length);
+      // console.log(idx.body.length);
       return idx.body.length;
     }).reduce((acc, cur) => {
       return cur+= acc;
@@ -52,7 +53,11 @@ var app = app || {};
 
   Article.allAuthors = () => {
     console.log('article.allauthors');
-    return Article.all.map().reduce();
+    return Article.all.map(article => article.author).reduce(function(allAuthors, authorName) {
+      if(allAuthors.indexOf(authorName) < 0) allAuthors.push(authorName);
+      console.log(allAuthors);
+      return allAuthors;
+    }, [])
   };
 
   Article.numWordsByAuthor = () => {
